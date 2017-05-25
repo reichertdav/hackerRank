@@ -39,4 +39,11 @@ public class KangarooTest {
         assertThat(firstKangaroo.isCatch(secondkangaroo)).isTrue();
     }
 
+    @Test
+    public void when_kangaroo_first_speedUp_more_than_kangaroo_second_without_intersectioisCatch_should_return_false() {
+        Kangaroo firstKangaroo = new Kangaroo(0, 5);
+        Kangaroo secondkangaroo = new Kangaroo(3, 3);
+
+        assertThat(firstKangaroo.isCatch(secondkangaroo)).isFalse();
+    }
 }

@@ -21,7 +21,14 @@ public class DayOfProgrammer {
         return nonLeapYearDayOfProgramerAfter1918 + year;
     }
 
-    public boolean isLeapYear() {
+    public boolean isLeapYearBefore1918() {
+        if (year % 4 == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isLeapYearAfter1918() {
 
         if(year % 4 != 0){
             return false;
@@ -34,6 +41,13 @@ public class DayOfProgrammer {
         }
 
         return true;
+    }
+
+    public boolean isLeapYear(){
+        if(year<1918){
+            return isLeapYearBefore1918();
+        }
+        return  isLeapYearAfter1918();
     }
 
 }

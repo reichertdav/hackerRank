@@ -1,28 +1,27 @@
 package evenTree;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URL;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void mainFromFile(String args []){
+    public static void main(String args[]) {
+        EvenTree evenTree;
+        int nodeNumber;
+        int edgeNumber;
+        Scanner in = new Scanner(System.in);
+        in.nextLine();
+        String[] nodeNumberAndEdgeNumber = in.nextLine().split(" ");
 
-    }
-
-    public void test(){
-        URL url = getClass().getResource("input.txt");
-        File file = new File(url.getPath());
-        Scanner in = null;
-        try {
-            in = new Scanner(file);
-            String t = in.nextLine();
-            System.out.println(t);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        nodeNumber = Integer.valueOf(nodeNumberAndEdgeNumber[1]);
+        edgeNumber = Integer.valueOf(nodeNumberAndEdgeNumber[0]);
+        evenTree = new EvenTree(edgeNumber, nodeNumber);
+        while (in.hasNext()) {
+            nodeNumberAndEdgeNumber = in.nextLine().split(" ");
+            nodeNumber = Integer.valueOf(nodeNumberAndEdgeNumber[1]);
+            edgeNumber = Integer.valueOf(nodeNumberAndEdgeNumber[0]);
+            evenTree.addNode(edgeNumber, nodeNumber);
         }
 
+        System.out.println(evenTree.cut());
     }
 }

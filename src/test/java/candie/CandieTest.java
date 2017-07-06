@@ -30,4 +30,23 @@ public class CandieTest {
         }
 
     }
+    @Test
+    public void when_we_have_studentClass2_distrib_should_return_19() {
+        Scanner in;
+        File file = new File("src/test/java/candie/studentClass2.txt");
+        Candie candie = new Candie();
+        try {
+            in = new Scanner(file);
+            int studentQuantity = in.nextInt();
+            int[] studentRank = new int[studentQuantity];
+
+            for (int i = 0; i < studentQuantity; i++) {
+                studentRank[i] = in.nextInt();
+            }
+            assertThat(candie.ditrib(studentRank)).isEqualTo(19);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

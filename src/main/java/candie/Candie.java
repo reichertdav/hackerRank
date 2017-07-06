@@ -19,12 +19,12 @@ class Candie {
             }
             ascending[i] = previousAscendingRank;
 
-            if (previousDescendingRank < studentRank[studentQuantity - i]) {
+            if (previousDescendingRank > studentRank[(studentQuantity - i-1)]) {
                 previousDescendingRank++;
             } else {
                 previousDescendingRank = 1;
             }
-            descending[i - 1] = previousDescendingRank;
+            descending[studentQuantity - i-1] = previousDescendingRank;
 
         }
         int candieToditrub = 0;

@@ -9,22 +9,24 @@ class Candie {
         int[] descending = new int[studentQuantity];
         ascending[0] = 1;
         descending[studentQuantity - 1] = 1;
-        int previousAscendingRank = 1;
-        int previousDescendingRank = 1;
+        int previousAscendingRank = studentRank[0];
+        int previousDescendingRank = studentRank[studentQuantity - 1];
         for (int i = 1; i < studentQuantity; i++) {
             if (previousAscendingRank < studentRank[i]) {
-                previousAscendingRank++;
-            } else {
-                previousAscendingRank = 1;
-            }
-            ascending[i] = previousAscendingRank;
+                ascending[i] = ascending[i - 1] + 1;
 
-            if (previousDescendingRank > studentRank[(studentQuantity - i-1)]) {
-                previousDescendingRank++;
             } else {
-                previousDescendingRank = 1;
+                ascending[i] = 1;
             }
-            descending[studentQuantity - i-1] = previousDescendingRank;
+            previousAscendingRank = studentRank[i];
+
+            if (previousDescendingRank < studentRank[(studentQuantity - i - 1)]) {
+                descending[(studentQuantity - i - 1)] = descending[(studentQuantity - i)] + 1;
+            } else {
+                descending[(studentQuantity - i - 1)] = 1;
+
+            }
+            previousDescendingRank = studentRank[(studentQuantity - i - 1)];
 
         }
         int candieToditrub = 0;
